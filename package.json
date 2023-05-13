@@ -1,0 +1,47 @@
+{
+    "name": "fast-node-downloader",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "bin": {
+        "fnd": "./dist/cli/index.js"
+    },
+    "scripts": {
+        "build": "rimraf ./dist && tsc && mkdirp dist/temp && mkdirp dist/download",
+        "start": "node dist/index.js",
+        "test": "jest",
+        "format": "prettier '**/*.{js,ts,mjs,cjs,json,css,scss}' --write"
+    },
+    "files": [
+        "dist"
+    ],
+    "keywords": [
+        "download",
+        "downloader"
+    ],
+    "author": "HiepNK",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/preset-env": "^7.21.5",
+        "@babel/preset-typescript": "^7.21.5",
+        "@types/cli-progress": "^3.11.0",
+        "@types/commander": "^2.12.2",
+        "@types/jest": "^29.5.1",
+        "@types/multistream": "^4.1.0",
+        "@types/node": "^20.1.0",
+        "cli-progress": "^3.12.0",
+        "colors": "^1.4.0",
+        "commander": "^10.0.1",
+        "husky": "^8.0.3",
+        "jest": "^29.5.0",
+        "mkdirp": "^3.0.1",
+        "multistream": "^4.1.0",
+        "nodemon": "^2.0.22",
+        "prettier": "^2.8.8",
+        "rimraf": "^5.0.0",
+        "ts-jest": "^29.1.0",
+        "ts-node": "^10.9.1",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.0.4"
+    }
+}
