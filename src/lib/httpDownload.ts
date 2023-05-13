@@ -15,7 +15,7 @@ const httpDownload = ({ url, startBytes, endBytes, fileName, onData }: IDownload
     const request = url.startsWith('https://') ? https : http;
     const range = startBytes && `bytes=${startBytes}-${endBytes}`;
     return new Promise((resolve, reject) => {
-       request.get(url, { headers: range ? { Range: range } : {} }, (res) => {
+        request.get(url, { headers: range ? { Range: range } : {} }, (res) => {
             const isOK = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
             if (!isOK) reject('Cannot download partial file');
 

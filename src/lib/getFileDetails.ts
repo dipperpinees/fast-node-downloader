@@ -19,7 +19,7 @@ const getFileDetails = (url: string, timeout = 10000): Promise<IFileDetails> => 
                 fileName: getFileNameFromHeader(res.headers['content-disposition']) || getFileNameFromURL(url),
             });
         });
-    })
+    });
 };
 
 export default getFileDetails;

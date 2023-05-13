@@ -11,7 +11,7 @@ const mergeFile = (fileName: string, length: number, directory: string | undefin
     for (let i = 0; i < length; i++) {
         filesToMerge.push(path.join(__dirname, `../temp/${fileName}-${i}`));
     }
-    
+
     return new Promise((resolve, reject) => {
         const multiStream = new multistream(filesToMerge.map((file) => fs.createReadStream(file)));
         multiStream.pipe(output);

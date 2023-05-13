@@ -21,9 +21,9 @@ parentPort?.on('message', async ({ fileName, url, startBytes, endBytes }: Worker
             fileName,
             startBytes,
             endBytes,
-            onData: (chunk) => sendMesage('chunk', chunk.length)
+            onData: (chunk) => sendMesage('chunk', chunk.length),
         });
-    
+
         sendMesage('done');
     } catch (err: any) {
         console.log(err.message);

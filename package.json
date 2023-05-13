@@ -16,9 +16,13 @@
         "dist"
     ],
     "keywords": [
+        "nodejs",
         "download",
-        "downloader"
+        "downloader",
+        "idm"
     ],
+    "repository": "https://github.com/hiepnguyen223/fast-node-downloader",
+    "homepage": "https://github.com/hiepnguyen223/fast-node-downloader",
     "author": "HiepNK",
     "license": "ISC",
     "devDependencies": {

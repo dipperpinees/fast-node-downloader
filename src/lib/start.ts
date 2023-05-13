@@ -65,7 +65,6 @@ const download = async ({ numConnections = os.cpus().length, url, directory }: I
                             errorHandling(err);
                             process.exit(1);
                         }
-                        
                     }
                 }
                 if (type === 'chunk') {
@@ -85,6 +84,6 @@ const errorHandling = (err: unknown) => {
         errorMessage = err.message;
     }
     console.log(colors.red(`\nError:::, ${errorMessage}`));
-}
+};
 
 export default download;
