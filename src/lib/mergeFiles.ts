@@ -1,6 +1,5 @@
 import * as fs from 'fs';
 import * as multistream from 'multistream';
-import { getDownloadDirectory } from './downloadDirectory';
 
 const mergeFile = (fileName: string, length: number, directory: string) => {
     const filesToMerge: string[] = [];

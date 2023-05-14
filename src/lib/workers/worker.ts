@@ -22,7 +22,7 @@ parentPort?.on('message', async ({ fileName, url, startBytes, endBytes, director
         startBytes,
         endBytes,
         onData: (chunk) => sendMesage('chunk', chunk.length),
-        directory
+        directory,
     });
 
     sendMesage('done');

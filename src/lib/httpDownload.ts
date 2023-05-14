@@ -2,13 +2,17 @@ import * as fs from 'fs';
 import * as http from 'http';
 import * as https from 'https';
 
+type Chunk = {
+    length: number;
+};
+
 interface IDownloadArgument {
     fileName: string;
     url: string;
     startBytes: number;
     endBytes: number | string;
     directory: string;
-    onData: (chunk: any) => void;
+    onData: (chunk: Chunk) => void;
 }
 
 const httpDownload = ({ url, startBytes, endBytes, fileName, onData, directory }: IDownloadArgument) => {

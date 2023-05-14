@@ -11,9 +11,9 @@ const startCommand = () => {
         .argument('<url>', 'URL to download')
         .option('-c, --connection <value>', 'Number of download connections')
         .option('-d, --directory <value>', 'Downloaded file directory')
-        .action((url, options) => {
-            const numConnections = options.connection;
-            const directory = options.directory;
+        .action((url: string, options: { connection: number; directory?: string | undefined }) => {
+            const numConnections: number | undefined = options.connection;
+            const directory: string | undefined = options.directory;
 
             download({ numConnections, url, directory, debug: true })
                 .then((directory) => {

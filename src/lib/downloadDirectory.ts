@@ -8,7 +8,7 @@ const getDownloadDirectory = () => {
     }
 
     if (!fs.existsSync(DEFAULT_DOWNLOAD_DIR)) {
-        fs.mkdirSync(DEFAULT_DOWNLOAD_DIR)
+        fs.mkdirSync(DEFAULT_DOWNLOAD_DIR);
     }
 
     return DEFAULT_DOWNLOAD_DIR;

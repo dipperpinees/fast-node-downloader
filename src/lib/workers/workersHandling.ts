@@ -1,4 +1,4 @@
-import * as path from "path";
+import * as path from 'path';
 import { Worker } from 'worker_threads';
 import multiBar from '../../cli/multiProgressBar';
 import mergeFile from '../mergeFiles';
@@ -12,13 +12,13 @@ interface IWorkersHandlingProps {
     directory: string;
 }
 
-const workersHandling = ({numConnections, fileName, url, totalBytes, debug, directory}: IWorkersHandlingProps) => {
+const workersHandling = ({ numConnections, fileName, url, totalBytes, debug, directory }: IWorkersHandlingProps) => {
     if (!totalBytes) {
         numConnections = 1;
     }
     const maximumBytesPerConnection = Math.floor(totalBytes / numConnections);
     let numSuccessfulWorker = 0;
-    
+
     return new Promise<string>((resolve, reject) => {
         for (let i = 0; i < numConnections; i++) {
             const startBytes = i * maximumBytesPerConnection;
@@ -30,12 +30,12 @@ const workersHandling = ({numConnections, fileName, url, totalBytes, debug, dire
                 url,
                 endBytes,
                 startBytes,
-                directory
+                directory,
             });
             const bytes = endBytes ? endBytes - startBytes : totalBytes - startBytes;
-            const progressBar = debug ? multiBar.create(bytes, 0, { worker: i }) : undefined;;
+            const progressBar = debug ? multiBar.create(bytes, 0, { worker: i }) : undefined;
             worker.on('error', (err) => {
-                reject(new Error(`Worker ${i} error:: ${err.message}`))
+                reject(new Error(`Worker ${i} error:: ${err.message}`));
             });
             worker.on('message', async ({ type, value }) => {
                 if (type === 'done') {
@@ -46,7 +46,7 @@ const workersHandling = ({numConnections, fileName, url, totalBytes, debug, dire
                             const destinationFile = await mergeFile(fileName, numConnections, directory);
                             resolve(destinationFile);
                         } catch (err) {
-                            let errMessage = "Failed to merge files"
+                            let errMessage = 'Failed to merge files';
                             if (err instanceof Error) {
                                 errMessage = err.message;
                             }
@@ -59,7 +59,7 @@ const workersHandling = ({numConnections, fileName, url, totalBytes, debug, dire
                 }
             });
         }
-    })
-}
+    });
+};
 
 export default workersHandling;

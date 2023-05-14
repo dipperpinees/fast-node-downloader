@@ -13,7 +13,7 @@ const getFileDetails = (url: string, timeout = 10000): Promise<IFileDetails> => 
         request.get(url, { timeout }, (res) => {
             res.destroy();
             const isOK = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
-            if (!isOK) reject(`request abort with status ${res.statusCode}`);
+            if (!isOK) reject(new Error(`request abort with status ${res.statusCode || ''}`));
             resolve({
                 totalBytes: Number(res.headers['content-length']),
                 fileName: getFileNameFromHeader(res.headers['content-disposition']) || getFileNameFromURL(url),
