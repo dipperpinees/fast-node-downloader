@@ -18,8 +18,8 @@
         "pre-commit": "lint-staged"
     },
     "lint-staged": {
-        "*.ts": [
-            "prettier '**/*.{ts}' --write",
+        "src/**/*.{ts}": [
+            "prettier --write",
             "eslint --fix"
         ]
     },
