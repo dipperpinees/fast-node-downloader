@@ -1,18 +1,16 @@
 import * as fs from 'fs';
 import * as multistream from 'multistream';
 import { getDownloadDirectory } from './downloadDirectory';
-import * as path from 'path';
 
-const mergeFile = (fileName: string, length: number, directory: string | undefined) => {
+const mergeFile = (fileName: string, length: number, directory: string) => {
     const filesToMerge: string[] = [];
-    const directoryPath = directory || getDownloadDirectory();
-    const destinationFile = `${directoryPath}${directoryPath.endsWith('/') ? '' : '/'}${fileName}`;
+    const destinationFile = `${directory}${directory.endsWith('/') ? '' : '/'}${fileName}`;
     const output = fs.createWriteStream(destinationFile);
     for (let i = 0; i < length; i++) {
-        filesToMerge.push(path.join(__dirname, `../temp/${fileName}-${i}`));
+        filesToMerge.push(`${destinationFile}-${i}`);
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         const multiStream = new multistream(filesToMerge.map((file) => fs.createReadStream(file)));
         multiStream.pipe(output);
         multiStream.on('end', () => {
