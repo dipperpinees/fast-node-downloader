@@ -1,4 +1,4 @@
-import * as os from 'os';
+import os from 'os';
 
 const HOME_DIR = os.homedir();
 const DIRECTORY_TEMP_PATH = `${HOME_DIR}/directory.temp`;

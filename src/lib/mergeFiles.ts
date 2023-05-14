@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as multistream from 'multistream';
+import fs from 'fs';
+import multistream from 'multistream';
 
 const mergeFile = (fileName: string, length: number, directory: string) => {
     const filesToMerge: string[] = [];

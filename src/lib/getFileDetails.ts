@@ -1,5 +1,5 @@
-import * as https from 'https';
-import * as http from 'http';
+import https from 'https';
+import http from 'http';
 import { getFileNameFromHeader, getFileNameFromURL } from './getFileName';
 
 interface IFileDetails {

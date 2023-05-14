@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import download from '../lib/start';
-import * as colors from 'colors';
+import colors from 'colors';
 
 const startCommand = () => {
     const program = new Command();

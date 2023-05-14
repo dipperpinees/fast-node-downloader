@@ -1,3 +1,1 @@
-import download from './lib/start';
-
-export default download;
+export { default as download } from './lib/start';

@@ -1,4 +1,4 @@
-import * as cliProgress from 'cli-progress';
+import cliProgress from 'cli-progress';
 
 const multiBar = new cliProgress.MultiBar(
     {

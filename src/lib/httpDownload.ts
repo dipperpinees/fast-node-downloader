@@ -1,6 +1,6 @@
-import * as fs from 'fs';
-import * as http from 'http';
-import * as https from 'https';
+import fs from 'fs';
+import http from 'http';
+import https from 'https';
 
 type Chunk = {
     length: number;

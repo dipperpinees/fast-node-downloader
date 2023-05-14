@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as os from 'os';
+import fs from 'fs';
+import os from 'os';
 import { getDownloadDirectory, saveDownloadDirectoryTemp } from './downloadDirectory';
 import getFileDetails from './getFileDetails';
 import isURL from './isURL';

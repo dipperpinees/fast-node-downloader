@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import fs from 'fs';
 import { DEFAULT_DOWNLOAD_DIR, DIRECTORY_TEMP_PATH } from './constants';
 
 const getDownloadDirectory = () => {

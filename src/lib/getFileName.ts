@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 
 export const getFileNameFromURL = (urlString: string) => {
     const parsedUrl = new URL(urlString);
