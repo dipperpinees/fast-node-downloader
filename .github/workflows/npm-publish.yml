@@ -17,6 +17,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Add README
+        run: cp README.md dist
       - name: Publish package on NPM 📦
         run: npm publish
         env:
