@@ -9,19 +9,19 @@ This library is designed to enhance download speeds by utilizing multiple thread
 Using npm:
 
 ```bash
-$ npm install fast-node-download
+$ npm install fast-node-downloader
 ```
 
 Using yarn:
 
 ```bash
-$ yarn add fast-node-download
+$ yarn add fast-node-downloader
 ```
 
 Using pnpm:
 
 ```bash
-$ pnpm add fast-node-download
+$ pnpm add fast-node-downloader
 ```
 
 ## Usage
