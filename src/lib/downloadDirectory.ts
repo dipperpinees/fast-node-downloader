@@ -1,12 +1,10 @@
 import fs from 'fs';
-import { DEFAULT_DOWNLOAD_DIR, DIRECTORY_TEMP_PATH } from './constants';
+import os from 'os';
+
+const HOME_DIR = os.homedir();
+const DEFAULT_DOWNLOAD_DIR = `${HOME_DIR}/Downloads`;
 
 const getDownloadDirectory = () => {
-    if (fs.existsSync(DIRECTORY_TEMP_PATH)) {
-        const directoryTempContent = fs.readFileSync(DIRECTORY_TEMP_PATH, { encoding: 'utf8' });
-        if (fs.existsSync(directoryTempContent)) return directoryTempContent;
-    }
-
     if (!fs.existsSync(DEFAULT_DOWNLOAD_DIR)) {
         fs.mkdirSync(DEFAULT_DOWNLOAD_DIR);
     }
@@ -14,8 +12,4 @@ const getDownloadDirectory = () => {
     return DEFAULT_DOWNLOAD_DIR;
 };
 
-const saveDownloadDirectoryTemp = (path: string) => {
-    return fs.writeFileSync(DIRECTORY_TEMP_PATH, path);
-};
-
-export { getDownloadDirectory, saveDownloadDirectoryTemp };
+export default getDownloadDirectory;

@@ -13,26 +13,46 @@ interface IDownloadArgument {
     endBytes: number | string;
     directory: string;
     onData: (chunk: Chunk) => void;
+    isRangeHeader: boolean;
+    headers: http.OutgoingHttpHeaders;
 }
 
-const httpDownload = ({ url, startBytes, endBytes, fileName, onData, directory }: IDownloadArgument) => {
+const httpDownload = ({
+    url,
+    startBytes,
+    endBytes,
+    fileName,
+    onData,
+    directory,
+    isRangeHeader,
+    headers,
+}: IDownloadArgument) => {
     const request = url.startsWith('https://') ? https : http;
-    const range = startBytes && `bytes=${startBytes}-${endBytes}`;
+    const range = `bytes=${startBytes}-${endBytes}`;
     return new Promise((resolve, reject) => {
-        request.get(url, { headers: range ? { Range: range } : {} }, (res) => {
-            const isOK = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
-            if (!isOK) reject('Cannot download partial file');
+        request.get(
+            url,
+            {
+                headers: {
+                    ...(isRangeHeader && { Range: range }),
+                    ...headers,
+                },
+            },
+            (res) => {
+                const isOK = res.statusCode && res.statusCode >= 200 && res.statusCode < 300;
+                if (!isOK) reject(new Error('Cannot download partial file'));
 
-            const file = fs.createWriteStream(`${directory}${directory.endsWith('/') ? '' : '/'}${fileName}`);
-            res.pipe(file);
+                const file = fs.createWriteStream(`${directory}${directory.endsWith('/') ? '' : '/'}${fileName}`);
+                res.pipe(file);
 
-            file.on('data', onData);
+                file.on('data', onData);
 
-            file.on('finish', () => {
-                file.close();
-                resolve('Partial file downloaded successfully');
-            });
-        });
+                file.on('finish', () => {
+                    file.close();
+                    resolve('Partial file downloaded successfully');
+                });
+            }
+        );
     });
 };
 
