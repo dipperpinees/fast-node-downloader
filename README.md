@@ -63,7 +63,7 @@ const startDownload = async () => {
         const key = await download("https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4", options);
         console.log("\n" + key)
     } catch (error) {
-        console.log(err.message)
+        console.error(error.message)
     }
 }
 
