@@ -1,5 +1,5 @@
 import https from 'https';
-import http from 'http';
+import http, { type OutgoingHttpHeaders } from 'http';
 import { getFileNameFromHeader, getFileNameFromURL } from './getFileName';
 
 interface IFileDetailsExtraProps {
