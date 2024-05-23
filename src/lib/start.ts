@@ -37,7 +37,7 @@ const download = async (
         throw new Error('URL is not valid');
     }
 
-    const { totalBytes, fileName } = await getFileDetails(url);
+    const { totalBytes, fileName } = await getFileDetails(url, { headers });
     if (!totalBytes) {
         numConnections = 1;
     }
